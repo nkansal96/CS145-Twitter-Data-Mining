@@ -11,6 +11,7 @@ class TwitterData(object):
 		self.file_loc = file_loc
 		try:
 			sys.stdout.write("Attempting to read stored data from '{}'... ".format(file_loc))
+			sys.stdout.flush()
 			with open(file_loc, 'rb') as f:
 				self.data = pickle.load(f)
 				sys.stdout.write("Read {} tweets.\n".format(len(self.data)))
