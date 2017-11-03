@@ -9,7 +9,7 @@ def scrape_tweets(file_loc, max_tweets):
 	api = TwitterAPI(apiKey, apiSecret, accessToken, accessTokenSecret)
 	count = 0
 
-	stream = api.request('statuses/filter', {'locations':'-74,40,-73,41'})
+	stream = api.request('statuses/filter', {'locations':'-118.6,33.7,-118.2,34.4'})
 	for tweet in stream:
 		td.add_tweet(tweet)
 		count += 1
