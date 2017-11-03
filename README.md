@@ -3,7 +3,7 @@ Data Mining project for CS 145
 
 ## Setup
 
-Clone this repository and install the requirements:
+Clone this repository and download the `passwords.py` file and put inside the folder with `app.py`. Then install the requirements:
 
 ```bash
 $ pip install TwitterAPI
