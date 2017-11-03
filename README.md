@@ -15,14 +15,14 @@ The program supports the following arguments:
 
 ```bash
 $ python app.py --help
-usage: app.py [-h] [--file FILE] [--scrape] [--raw_dump] [--pretty_dump]
+usage: app.py [-h] [--file FILE] [--max_tweets MAX_TWEETS] [--scrape] [--dump]
 
 CS 145 Twitter Data Mining Project
 
 optional arguments:
-  -h, --help     show this help message and exit
-  --file FILE    Location to store/retrieve tweets (default ./data.bin)
-  --scrape       Start scraping tweets from twitter
-  --raw_dump     Dump the raw data from the given file to stdout
-  --pretty_dump  Dump the data prettified from the given file to stdout
+  -h, --help      show this help message and exit
+  --file FILE     Location to store/retrieve tweets (default ./data.bin)
+  --max_tweets M  The maximum number of tweets to crawl (default is 2 ** 63 - 1)
+  --scrape        Start scraping tweets from twitter
+  --dump          Dump the data from the given file to stdout in JSON format
 ```
