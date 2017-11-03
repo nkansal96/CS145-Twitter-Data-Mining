@@ -14,7 +14,7 @@ $ pip install TwitterAPI
 The program supports the following arguments:
 
 ```bash
-$ python app.py --help
+$ python code/app.py --help
 usage: app.py [-h] [--file FILE] [--max_tweets MAX_TWEETS] [--scrape] [--dump]
 
 CS 145 Twitter Data Mining Project
