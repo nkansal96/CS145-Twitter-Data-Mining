@@ -1,0 +1,428 @@
+[
+  {
+    "contributors": null,
+    "coordinates": null,
+    "created_at": "Fri Nov 03 18:43:44 +0000 2017",
+    "display_text_range": [
+      26,
+      67
+    ],
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id": 18036746,
+          "id_str": "18036746",
+          "indices": [
+            0,
+            11
+          ],
+          "name": "BranDIE\u26a1\ufe0fPosey",
+          "screen_name": "Brandazzle"
+        },
+        {
+          "id": 847191424156258306,
+          "id_str": "847191424156258306",
+          "indices": [
+            12,
+            25
+          ],
+          "name": "Frank Conanan",
+          "screen_name": "messhallcook"
+        }
+      ]
+    },
+    "favorite_count": 0,
+    "favorited": false,
+    "filter_level": "low",
+    "geo": null,
+    "id": 926520284655403008,
+    "id_str": "926520284655403008",
+    "in_reply_to_screen_name": "Brandazzle",
+    "in_reply_to_status_id": 926491316908785664,
+    "in_reply_to_status_id_str": "926491316908785664",
+    "in_reply_to_user_id": 18036746,
+    "in_reply_to_user_id_str": "18036746",
+    "is_quote_status": false,
+    "lang": "en",
+    "place": {
+      "attributes": {},
+      "bounding_box": {
+        "coordinates": [
+          [
+            [
+              -118.668404,
+              33.704538
+            ],
+            [
+              -118.668404,
+              34.337041
+            ],
+            [
+              -118.155409,
+              34.337041
+            ],
+            [
+              -118.155409,
+              33.704538
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "country": "United States",
+      "country_code": "US",
+      "full_name": "Los Angeles, CA",
+      "id": "3b77caf94bfc81fe",
+      "name": "Los Angeles",
+      "place_type": "city",
+      "url": "https://api.twitter.com/1.1/geo/id/3b77caf94bfc81fe.json"
+    },
+    "quote_count": 0,
+    "reply_count": 0,
+    "retweet_count": 0,
+    "retweeted": false,
+    "source": "<a href=\"http://twitter.com/download/iphone\" rel=\"nofollow\">Twitter for iPhone</a>",
+    "text": "@Brandazzle @messhallcook I don\u2019t wanna talk to rich people either.",
+    "timestamp_ms": "1509734624433",
+    "truncated": false,
+    "user": {
+      "contributors_enabled": false,
+      "created_at": "Thu Apr 21 01:22:27 +0000 2011",
+      "default_profile": false,
+      "default_profile_image": false,
+      "description": "Showrunner Danger & Eggs on @amazonvideo. Decider at @punyent. I regret every tweet.",
+      "favourites_count": 23339,
+      "follow_request_sent": null,
+      "followers_count": 10070,
+      "following": null,
+      "friends_count": 801,
+      "geo_enabled": true,
+      "id": 285368746,
+      "id_str": "285368746",
+      "is_translator": false,
+      "lang": "en",
+      "listed_count": 144,
+      "location": "Los Angeles, CA",
+      "name": "Shadi Petosky",
+      "notifications": null,
+      "profile_background_color": "1A1B1F",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/378800000135664508/rql4qO3H.jpeg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/378800000135664508/rql4qO3H.jpeg",
+      "profile_background_tile": false,
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/285368746/1397007530",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/667991476337553408/I3XbeKkR_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/667991476337553408/I3XbeKkR_normal.jpg",
+      "profile_link_color": "2FC2EF",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "252429",
+      "profile_text_color": "666666",
+      "profile_use_background_image": true,
+      "protected": false,
+      "screen_name": "shadipetosky",
+      "statuses_count": 4872,
+      "time_zone": "Pacific Time (US & Canada)",
+      "translator_type": "none",
+      "url": "https://www.amazon.com/Danger-Eggs/dp/B016J3Z8NU",
+      "utc_offset": -25200,
+      "verified": true
+    }
+  },
+  {
+    "contributors": null,
+    "coordinates": null,
+    "created_at": "Fri Nov 03 18:43:44 +0000 2017",
+    "display_text_range": [
+      15,
+      140
+    ],
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [
+        {
+          "display_url": "twitter.com/i/web/status/9\u2026",
+          "expanded_url": "https://twitter.com/i/web/status/926520285028786176",
+          "indices": [
+            117,
+            140
+          ],
+          "url": "https://t.co/ntSi67SHI7"
+        }
+      ],
+      "user_mentions": [
+        {
+          "id": 26642006,
+          "id_str": "26642006",
+          "indices": [
+            0,
+            14
+          ],
+          "name": "Alyssa Milano",
+          "screen_name": "Alyssa_Milano"
+        }
+      ]
+    },
+    "extended_tweet": {
+      "display_text_range": [
+        15,
+        149
+      ],
+      "entities": {
+        "hashtags": [],
+        "symbols": [],
+        "urls": [],
+        "user_mentions": [
+          {
+            "id": 26642006,
+            "id_str": "26642006",
+            "indices": [
+              0,
+              14
+            ],
+            "name": "Alyssa Milano",
+            "screen_name": "Alyssa_Milano"
+          },
+          {
+            "id": 20562637,
+            "id_str": "20562637",
+            "indices": [
+              122,
+              138
+            ],
+            "name": "Business Insider",
+            "screen_name": "businessinsider"
+          },
+          {
+            "id": 14344823,
+            "id_str": "14344823",
+            "indices": [
+              139,
+              149
+            ],
+            "name": "Senate Republicans",
+            "screen_name": "SenateGOP"
+          }
+        ]
+      },
+      "full_text": "@Alyssa_Milano \"Republican colleagues, however, have previously\u00a0expressed support for\u00a0Mueller and his investigation.\" Via @businessinsider @SenateGOP"
+    },
+    "favorite_count": 0,
+    "favorited": false,
+    "filter_level": "low",
+    "geo": null,
+    "id": 926520285028786176,
+    "id_str": "926520285028786176",
+    "in_reply_to_screen_name": "Alyssa_Milano",
+    "in_reply_to_status_id": 926515249678729216,
+    "in_reply_to_status_id_str": "926515249678729216",
+    "in_reply_to_user_id": 26642006,
+    "in_reply_to_user_id_str": "26642006",
+    "is_quote_status": false,
+    "lang": "en",
+    "place": {
+      "attributes": {},
+      "bounding_box": {
+        "coordinates": [
+          [
+            [
+              -118.668404,
+              33.704538
+            ],
+            [
+              -118.668404,
+              34.337041
+            ],
+            [
+              -118.155409,
+              34.337041
+            ],
+            [
+              -118.155409,
+              33.704538
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "country": "United States",
+      "country_code": "US",
+      "full_name": "Los Angeles, CA",
+      "id": "3b77caf94bfc81fe",
+      "name": "Los Angeles",
+      "place_type": "city",
+      "url": "https://api.twitter.com/1.1/geo/id/3b77caf94bfc81fe.json"
+    },
+    "quote_count": 0,
+    "reply_count": 0,
+    "retweet_count": 0,
+    "retweeted": false,
+    "source": "<a href=\"http://twitter.com/download/android\" rel=\"nofollow\">Twitter for Android</a>",
+    "text": "@Alyssa_Milano \"Republican colleagues, however, have previously\u00a0expressed support for\u00a0Mueller and his investigation\u2026 https://t.co/ntSi67SHI7",
+    "timestamp_ms": "1509734624522",
+    "truncated": true,
+    "user": {
+      "contributors_enabled": false,
+      "created_at": "Wed Mar 04 03:55:45 +0000 2009",
+      "default_profile": false,
+      "default_profile_image": false,
+      "description": "The Specialist (C)TX0008044160 #Army #Vet #Survivor #DonovanKnight #FormerFederalAgent #Actor #Author #TheLegendOfThingsPast  #AManAboutTown All Rights Reserved",
+      "favourites_count": 47488,
+      "follow_request_sent": null,
+      "followers_count": 81509,
+      "following": null,
+      "friends_count": 3070,
+      "geo_enabled": true,
+      "id": 22729901,
+      "id_str": "22729901",
+      "is_translator": false,
+      "lang": "en",
+      "listed_count": 375,
+      "location": "WorldWide 80Million StealthRUs",
+      "name": "Phillip Sheppard",
+      "notifications": null,
+      "profile_background_color": "131516",
+      "profile_background_image_url": "http://pbs.twimg.com/profile_background_images/585672514656796672/Z23742y5.jpg",
+      "profile_background_image_url_https": "https://pbs.twimg.com/profile_background_images/585672514656796672/Z23742y5.jpg",
+      "profile_background_tile": false,
+      "profile_banner_url": "https://pbs.twimg.com/profile_banners/22729901/1466632511",
+      "profile_image_url": "http://pbs.twimg.com/profile_images/922341455351267328/_WRZZt79_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/922341455351267328/_WRZZt79_normal.jpg",
+      "profile_link_color": "2842C7",
+      "profile_sidebar_border_color": "FFFFFF",
+      "profile_sidebar_fill_color": "F6F6F6",
+      "profile_text_color": "333333",
+      "profile_use_background_image": true,
+      "protected": false,
+      "screen_name": "PSheppardTV",
+      "statuses_count": 49240,
+      "time_zone": "America/Los_Angeles",
+      "translator_type": "none",
+      "url": "https://www.createspace.com/5431606",
+      "utc_offset": -25200,
+      "verified": true
+    }
+  },
+  {
+    "contributors": null,
+    "coordinates": null,
+    "created_at": "Fri Nov 03 18:43:44 +0000 2017",
+    "display_text_range": [
+      12,
+      107
+    ],
+    "entities": {
+      "hashtags": [],
+      "symbols": [],
+      "urls": [],
+      "user_mentions": [
+        {
+          "id": 37990581,
+          "id_str": "37990581",
+          "indices": [
+            0,
+            11
+          ],
+          "name": "Randy Prine",
+          "screen_name": "randyprine"
+        }
+      ]
+    },
+    "favorite_count": 0,
+    "favorited": false,
+    "filter_level": "low",
+    "geo": null,
+    "id": 926520284756111360,
+    "id_str": "926520284756111360",
+    "in_reply_to_screen_name": "randyprine",
+    "in_reply_to_status_id": 926519915372318720,
+    "in_reply_to_status_id_str": "926519915372318720",
+    "in_reply_to_user_id": 37990581,
+    "in_reply_to_user_id_str": "37990581",
+    "is_quote_status": false,
+    "lang": "en",
+    "place": {
+      "attributes": {},
+      "bounding_box": {
+        "coordinates": [
+          [
+            [
+              -124.482003,
+              32.528832
+            ],
+            [
+              -124.482003,
+              42.009519
+            ],
+            [
+              -114.131212,
+              42.009519
+            ],
+            [
+              -114.131212,
+              32.528832
+            ]
+          ]
+        ],
+        "type": "Polygon"
+      },
+      "country": "United States",
+      "country_code": "US",
+      "full_name": "California, USA",
+      "id": "fbd6d2f5a4e4a15e",
+      "name": "California",
+      "place_type": "admin",
+      "url": "https://api.twitter.com/1.1/geo/id/fbd6d2f5a4e4a15e.json"
+    },
+    "quote_count": 0,
+    "reply_count": 0,
+    "retweet_count": 0,
+    "retweeted": false,
+    "source": "<a href=\"http://twitter.com\" rel=\"nofollow\">Twitter Web Client</a>",
+    "text": "@randyprine The moron says that \"because he's was a businessman\" he doesn't really need to fill those jobs.",
+    "timestamp_ms": "1509734624457",
+    "truncated": false,
+    "user": {
+      "contributors_enabled": false,
+      "created_at": "Sat Feb 11 20:23:34 +0000 2012",
+      "default_profile": false,
+      "default_profile_image": false,
+      "description": "Tired of winning, too much winning...",
+      "favourites_count": 30843,
+      "follow_request_sent": null,
+      "followers_count": 828,
+      "following": null,
+      "friends_count": 230,
+      "geo_enabled": true,
+      "id": 489716862,
+      "id_str": "489716862",
+      "is_translator": false,
+      "lang": "en",
+      "listed_count": 29,
+      "location": "California, USA",
+      "name": "Merrill Lynch",
+      "notifications": null,
+      "profile_background_color": "000000",
+      "profile_background_image_url": "http://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_image_url_https": "https://abs.twimg.com/images/themes/theme1/bg.png",
+      "profile_background_tile": false,
+      "profile_image_url": "http://pbs.twimg.com/profile_images/856229704541421568/_HdHPOmK_normal.jpg",
+      "profile_image_url_https": "https://pbs.twimg.com/profile_images/856229704541421568/_HdHPOmK_normal.jpg",
+      "profile_link_color": "ABB8C2",
+      "profile_sidebar_border_color": "000000",
+      "profile_sidebar_fill_color": "000000",
+      "profile_text_color": "000000",
+      "profile_use_background_image": false,
+      "protected": false,
+      "screen_name": "MerrillLynched",
+      "statuses_count": 39332,
+      "time_zone": "Pacific Time (US & Canada)",
+      "translator_type": "none",
+      "url": null,
+      "utc_offset": -25200,
+      "verified": false
+    }
+  }
+]
