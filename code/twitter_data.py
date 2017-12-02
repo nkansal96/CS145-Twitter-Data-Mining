@@ -30,7 +30,7 @@ class TwitterData(object):
 
 	def serialize(self):
 		""" Serializes the object. Writes its data to a file """
-		with open(self.file_loc, 'w', 0) as f:
+		with open(self.file_loc, 'w') as f:
 			os.fsync(f.fileno())
 			f.write(json.dumps(self.tweets))
 
