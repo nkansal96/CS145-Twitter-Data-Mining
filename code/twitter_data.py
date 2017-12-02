@@ -21,7 +21,7 @@ class TwitterData(object):
 	def add_tweet(self, tweet):
 		""" Adds a tweet to the object """
 		self.tweets.append(tweet)
-		if len(self.tweets) % 10 == 0:
+		if len(self.tweets) % 50 == 0:
 			self.serialize()
 
 	def get_tweets(self):
