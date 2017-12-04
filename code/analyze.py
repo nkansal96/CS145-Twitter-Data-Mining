@@ -1,16 +1,21 @@
 import argparse, json, math
+from random import shuffle
 
 class geoCluster:
 	def __init__(self, file_path):
 		file = open(file_path)
 		self.tweets = json.load(file)
+		shuffle(self.tweets)
 
 
-	def createClusters(self, clusterSize=2500, numClusters=500, neighborDistance=0):
+	def createClusters(self, clusterSize=400, numClusters=20, neighborDistance=0):
 		n = len(self.tweets)
 		clusters = []
 		for i in range(0, n):
 			candidate = self.tweets[i]
+
+			if "timestamp_ms" not in candidate:
+				continue
 
 			if "place" not in candidate or candidate["place"] == None:
 				continue
@@ -19,13 +24,18 @@ class geoCluster:
 			 	continue
 
 			icoords = candidate["place"]["bounding_box"]["coordinates"]
-			neighbors = [i]
+			itime = int(candidate["timestamp_ms"])
 
+			neighbors = [i]
 			for k in range(0, n):
 				if i == k:
 					continue
 
 				neighbor = self.tweets[k]
+
+				if "timestamp_ms" not in neighbor:
+					continue
+
 				if "place" not in neighbor or neighbor["place"] == None:
 					continue
 
@@ -33,10 +43,20 @@ class geoCluster:
 					continue
 
 				kcoords = neighbor["place"]["bounding_box"]["coordinates"]
-
-				d = self.coordinateDistance(icoords, kcoords)
+				ktime = int(neighbor["timestamp_ms"])
 				
-				if d <= neighborDistance:
+				# 5 minutes apart
+				if itime > ktime:
+					td = itime - ktime
+				else:
+					td = ktime - itime
+
+				if td > 300000:
+					continue
+
+				distance = self.coordinateDistance(icoords, kcoords)
+
+				if distance <= neighborDistance:
 					neighbors.append(k)
 
 			if len(neighbors) > clusterSize:
@@ -44,7 +64,7 @@ class geoCluster:
 				print "cluster center:", i, "cluster size:" , len(neighbors)
 				if len(clusters) > numClusters:
 					return clusters
-
+					
 		return clusters
 
 
