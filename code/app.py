@@ -1,5 +1,6 @@
 from TwitterAPI import TwitterAPI
 from twitter_data import TwitterData, Tweet
+from analyzer import analyze
 from passwords import *
 import argparse, pprint, math, json
 
@@ -24,7 +25,7 @@ def scrape_tweets(file_loc, max_tweets):
 			print("Quitting")
 			print("Scraped {} tweets".format(count))
 			break
-			
+
 
 def dump_data(file_loc):
 	""" Dumps the data stored in the file """
@@ -37,9 +38,12 @@ if __name__ == '__main__':
 	parser.add_argument('--max_tweets', help='The maximum number of tweets to crawl (default is 2 ** 63 - 1)', type=int, default=(2 ** 63 - 1))
 	parser.add_argument('--scrape', help='Start scraping tweets from twitter', action='store_true')
 	parser.add_argument('--dump', help='Dump the data from the given file to stdout in JSON format', action='store_true')
+	parser.add_argument('--analyze', help='Analyze the data from the given file', action='store_true')
 
 	args = parser.parse_args()
 	if args.scrape:
 		scrape_tweets(args.file, args.max_tweets)
 	if args.dump:
 		dump_data(args.file)
+	if args.analyze:
+		analyze(args.file)

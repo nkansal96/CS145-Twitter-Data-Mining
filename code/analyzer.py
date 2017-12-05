@@ -1,11 +1,15 @@
-from nltk import word_tokenize
-from nltk.corpus import stopwords
-from nltk.stem.porter import *
+# from nltk import word_tokenize
+# from nltk.corpus import stopwords
+# from nltk.stem.porter import *
+from twitter_data import TwitterData, Tweet
 import argparse, json, pprint, re
 
 def analyze(file_loc):
-  f = open(file_loc)
-  tweets = json.load(f)
+  tweets = map(Tweet, TwitterData(file_loc).tweets)
+  print(tweets[0:10000])
+  return
+  # f = open(file_loc)
+  # tweets = json.load(f)
 
   tweet_dict = get_keywords(tweets)
   cluster(list(tweet_dict.keys()), list(tweet_dict.values()))
@@ -38,11 +42,3 @@ def get_distance(s1, s2):
     if word in s2:
       distance += 1
   return distance
-
-
-if __name__ == '__main__':
-	parser = argparse.ArgumentParser(description='CS 145 Twitter Data Mining Project')
-	parser.add_argument('--file', help='Location to retrieve tweets for analysis (default ./data.json)', default='data.json')
-
-	args = parser.parse_args()
-	analyze(args.file)

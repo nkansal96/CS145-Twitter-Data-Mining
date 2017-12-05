@@ -1,4 +1,4 @@
-import pickle, sys, json, os
+import pickle, sys, json, os, datetime
 
 class TwitterData(object):
 	""" Keep track of twitter data in a serialized fashion """
@@ -21,7 +21,7 @@ class TwitterData(object):
 	def add_tweet(self, tweet):
 		""" Adds a tweet to the object """
 		self.tweets.append(tweet)
-		if len(self.tweets) % 10 == 0:
+		if len(self.tweets) % 50 == 0:
 			self.serialize()
 
 	def get_tweets(self):
@@ -34,10 +34,38 @@ class TwitterData(object):
 			os.fsync(f.fileno())
 			f.write(json.dumps(self.tweets))
 
-class Tweet(json.JSONEncoder):
+class Tweet(object):
 	""" One actual tweet object -- we can methods to transform data here """
 	def __init__(self, tweet):
-		self.tweet = tweet
+		if type(tweet) == dict:
+			self.tweet = tweet
+		if type(tweet) == str:
+			self.tweet = json.loads(tweet)
+
+	def coordinates(self):
+		if "coordinates" in self.tweet:
+			if "coordinates" in self.tweet["coordinates"]:
+				return (self.tweet["coordinates"]["coordinates"][0], self.tweet["coordinates"]["coordinates"][1])
+		if "geo" in self.tweet:
+			if "coordinates" in self.tweet["coordinates"]:
+				return (self.tweet["geo"]["coordinates"][1], self.tweet["geo"]["coordinates"][0])
+		return None
+
+	def date(self):
+		if "timestamp_ms" in self.tweet:
+			return datetime.datetime.utcfromtimestamp(int(self.tweet["timestamp_ms"]))
+		return None
+
+	def text(self):
+		if "text" in self.tweet
+			return self.tweet["text"]
+		return None
+
+	def hashtags(self):
+		if "entities" in self.tweet:
+			if "hashtags" in self.tweet["entities"]:
+				return map(lambda x: x["text"], self.tweet["entities"]["hashtags"])
+		return []
 
 	def __repr__(self):
-		return json.loads(self.tweet)
+		return json.dumps(self.tweet, sort_keys=True, indent=2)
