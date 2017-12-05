@@ -3,6 +3,7 @@ from nltk.corpus import stopwords
 from nltk.stem.porter import *
 import argparse, json, math
 from random import shuffle
+from collections import Counter
 
 class geoCluster:
 	def __init__(self, file_path):
@@ -66,6 +67,20 @@ class geoCluster:
 					return clusters
 
 		return clusters
+
+	def clusterCommonTheme(cluster):
+		score = 0.0
+		for tweet in cluster:
+			text = tweet['text'].lower();
+			text = re.sub(r'http\S+', '', text)
+			keywords = word_tokenize(text)
+			keywords = [word for word in keywords if word not in stop]
+			keywords = [stemmer.stem(word) for word in keywords]
+			letters = re.compile(r'^[a-z0-9]+$')
+			keywords = [word for word in keywords if letters.match(word)]
+
+			c = Counter(keywords)
+			score += sum(0 if v == 1 else v for (k, v) in c.items()) / (3.0 * len(cluster))
 
 	def coordinateDistance(self, a, b):
 		ax = [a[0][0][0], a[0][1][0], a[0][2][0], a[0][3][0]]
