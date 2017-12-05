@@ -73,7 +73,8 @@ def get_keywords(tweets):
     keywords = [stemmer.stem(word) for word in keywords]
     letters = re.compile('^[a-z0-9]+$')
     keywords = [word for word in keywords if letters.match(word)]
-    tweet_dict[text] = set(keywords)
+    if len(keywords) > 0:
+      tweet_dict[text] = set(keywords)
 
   return tweet_dict
 
