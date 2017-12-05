@@ -1,6 +1,6 @@
 from TwitterAPI import TwitterAPI
 from twitter_data import TwitterData, Tweet
-from analyzer import analyze
+import analyze
 from passwords import *
 import argparse, pprint, math, json
 
@@ -46,4 +46,5 @@ if __name__ == '__main__':
 	if args.dump:
 		dump_data(args.file)
 	if args.analyze:
-		analyze(args.file)
+		g = geoCluster(args.file)
+		g.createClusters(clusterSize=400, numClusters=2000, neighborDistance=0)

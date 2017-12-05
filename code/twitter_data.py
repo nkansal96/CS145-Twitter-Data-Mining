@@ -1,4 +1,10 @@
 import pickle, sys, json, os, datetime
+from nltk import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem.porter import *
+
+stop = list(set(stopwords.words('english')))
+stemmer = PorterStemmer()
 
 class TwitterData(object):
 	""" Keep track of twitter data in a serialized fashion """
@@ -51,15 +57,22 @@ class Tweet(object):
 				return (self.tweet["geo"]["coordinates"][1], self.tweet["geo"]["coordinates"][0])
 		return None
 
-	def date(self):
+	def timestamp(self):
 		if "timestamp_ms" in self.tweet:
-			return datetime.datetime.utcfromtimestamp(int(self.tweet["timestamp_ms"]))
+			return int(self.tweet["timestamp_ms"])
 		return None
 
-	def text(self):
-		if "text" in self.tweet
-			return self.tweet["text"]
-		return None
+	def words(self):
+		if "text" in self.tweet:
+			text = self.tweet['text'].lower();
+			text = re.sub(r'http\S+', '', text)
+			keywords = word_tokenize(text)
+			keywords = [word for word in keywords if word not in stop]
+			keywords = [stemmer.stem(word) for word in keywords]
+			letters = re.compile(r'^[a-z0-9]+$')
+			keywords = [word for word in keywords if letters.match(word)]
+			return keywords
+		return []
 
 	def hashtags(self):
 		if "entities" in self.tweet:
