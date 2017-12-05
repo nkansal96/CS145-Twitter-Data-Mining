@@ -7,8 +7,7 @@ class geoCluster:
 		self.tweets = json.load(file)
 		shuffle(self.tweets)
 
-
-	def createClusters(self, clusterSize=400, numClusters=20, neighborDistance=0):
+	def createClusters(self, clusterSize=500, numClusters=10, neighborDistance=0):
 		n = len(self.tweets)
 		clusters = []
 		for i in range(0, n):
@@ -51,26 +50,19 @@ class geoCluster:
 				else:
 					td = ktime - itime
 
-				if td > 300000:
+				if td > 150000:
 					continue
 
-				distance = self.coordinateDistance(icoords, kcoords)
-
-				if distance <= neighborDistance:
-					neighbors.append(k)
+				neighbors.append(k)
 
 			if len(neighbors) > clusterSize:
+
 				clusters.append(neighbors)
 				print "cluster center:", i, "cluster size:" , len(neighbors)
 				if len(clusters) > numClusters:
 					return clusters
-					
+
 		return clusters
-
-
-
-
-
 
 	def coordinateDistance(self, a, b):
 		ax = [a[0][0][0], a[0][1][0], a[0][2][0], a[0][3][0]]
@@ -84,6 +76,28 @@ class geoCluster:
 
 		return math.sqrt(math.pow(closestX, 2) + math.pow(closestY, 2))
 
+	def analyzeCluster(self, cluster):
+		stop = set(stopwords.words('english'))
+
+		tweet_dict = {};
+
+		stemmer = PorterStemmer()
+
+		for i in cluster:
+			tweet = self.tweets[i]
+			text = tweet['text'].lower();
+			text = re.sub(r'http\S+', '', text)
+			keywords = word_tokenize(text)
+			keywords = [word for word in keywords if word not in stop]
+			keywords = [stemmer.stem(word) for word in keywords]
+			letters = re.compile('^[a-z0-9]+$')
+			keywords = [word for word in keywords if letters.match(word)]
+			tweet_dict[text] = set(keywords)
+		
+		return tweet_dict
+
+
+
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='CS 145 Twitter Data Mining Project')
 	parser.add_argument('--file', help='Location to retrieve tweets for analysis (default ./data.json)', default='data.json')
@@ -91,5 +105,5 @@ if __name__ == '__main__':
 	args = parser.parse_args()
 
 	g = geoCluster(args.file)
-	g.createClusters()
+	g.createClusters(clusterSize=400, numClusters=2000, neighborDistance=0)
 	
