@@ -1,4 +1,4 @@
-import pickle, sys, json, os, datetime
+import pickle, sys, json, os, datetime, itertools
 from nltk import word_tokenize
 from nltk.corpus import stopwords
 from nltk.stem.porter import *
@@ -41,12 +41,16 @@ class TwitterData(object):
 			f.write(json.dumps(self.tweets))
 
 class Tweet(object):
+	newid = itertools.count().next
+
 	""" One actual tweet object -- we can methods to transform data here """
 	def __init__(self, tweet):
 		if type(tweet) == dict:
 			self.tweet = tweet
 		if type(tweet) == str:
 			self.tweet = json.loads(tweet)
+		self.id = Tweet.newid()
+
 
 	def coordinates(self):
 		if "coordinates" in self.tweet:
