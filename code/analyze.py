@@ -1,3 +1,6 @@
+from nltk import word_tokenize
+from nltk.corpus import stopwords
+from nltk.stem.porter import *
 import argparse, json, math
 from random import shuffle
 
@@ -43,7 +46,7 @@ class geoCluster:
 
 				kcoords = neighbor["place"]["bounding_box"]["coordinates"]
 				ktime = int(neighbor["timestamp_ms"])
-				
+
 				# 5 minutes apart
 				if itime > ktime:
 					td = itime - ktime
@@ -93,7 +96,7 @@ class geoCluster:
 			letters = re.compile('^[a-z0-9]+$')
 			keywords = [word for word in keywords if letters.match(word)]
 			tweet_dict[text] = set(keywords)
-		
+
 		return tweet_dict
 
 
@@ -106,4 +109,3 @@ if __name__ == '__main__':
 
 	g = geoCluster(args.file)
 	g.createClusters(clusterSize=400, numClusters=2000, neighborDistance=0)
-	
