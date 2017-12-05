@@ -84,5 +84,9 @@ class Tweet(object):
 				return map(lambda x: x["text"], self.tweet["entities"]["hashtags"])
 		return []
 
+	def text(self):
+		if "text" in self.tweet:
+			return self.tweet["text"]
+
 	def __repr__(self):
 		return json.dumps(self.tweet, sort_keys=True, indent=2)

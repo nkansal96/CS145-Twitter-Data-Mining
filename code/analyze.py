@@ -1,6 +1,6 @@
-import argparse, json, math
+import argparse, json, math, re
 import utils
-from twitter_data import TwitterData, Tweet
+from twitter_data import TwitterData, Tweet, stop
 from random import shuffle
 from collections import Counter, defaultdict
 
@@ -11,33 +11,50 @@ class geoCluster:
 		shuffle(self.tweets)
 
 	def createClusters(self, clusterSize=500, numClusters=10, neighborDistance=0):
-		n = len(self.tweets)
+		tweets = self.tweets
 		clusters = []
-		for i in range(0, n):
-			candidate = self.tweets[i]
-			neighbors = [i]
+		foundCluster = True
 
-			itime = candidate.timestamp()
-			if not itime:
-				continue
+		while foundCluster and len(clusters) < numClusters:
+			foundCluster = False
+			for i in range(0, len(tweets)):
+				candidate = tweets[i]
+				neighbors = [candidate]
+				indices = [i]
 
-			for k in range(0, n):
-				if i == k:
+				itime = candidate.timestamp()
+				if not itime:
 					continue
 
-				neighbor = self.tweets[k]
-				ktime = neighbor.timestamp()
-				# 2.5 minutes
-				if ktime and abs(ktime - itime) < 150000:
-						neighbors.append(k)
+				for k in range(0, len(tweets)):
+					if i == k:
+						continue
 
-			if len(neighbors) > clusterSize:
-				clusters.append(neighbors)
-				print "cluster center:", i, "cluster size:" , len(neighbors)
-				if len(clusters) > numClusters:
-					return clusters
-				print(self.clusterCommonTheme(map(lambda i: self.tweets[i], neighbors)))
-				print(self.clusterNearness(map(lambda i: self.tweets[i], neighbors)))
+					neighbor = tweets[k]
+					ktime = neighbor.timestamp()
+
+					# 2.5 minutes
+					if ktime and abs(ktime - itime) < 150000:
+						neighbors.append(neighbor)
+						indices.append(k)
+
+				if len(neighbors) > clusterSize:
+					foundCluster = True
+					clusters.append(neighbors)
+					print "cluster center:", i, "cluster size:" , len(neighbors), "tweets remaining", len(tweets) - len(neighbors)
+
+					numRemoved = 0
+					for j in indices:
+						del tweets[j - numRemoved]
+						numRemoved += 1
+
+					print "cluster word counts:"
+					wm = self.clusterWordmap(neighbors)
+					for word in wm:
+						if wm[word] > 15:
+							print word, wm[word]
+
+					break
 		return clusters
 
 	def clusterCommonTheme(self, cluster):
@@ -73,6 +90,17 @@ class geoCluster:
 				d += v
 				c += 1
 		return d / float(c)
+
+	def clusterWordmap(self, cluster):
+		wordmap = defaultdict(int)
+		for tweet in cluster:
+			text = tweet.text()
+			text = re.sub(r'http\S+', '', text)
+			words = text.split()
+			for word in words:
+				if word not in stop and len(word) > 3:
+					wordmap[word] += 1
+		return wordmap
 
 	def coordinateDistance(self, a, b):
 		ax = [a[0][0][0], a[0][1][0], a[0][2][0], a[0][3][0]]
