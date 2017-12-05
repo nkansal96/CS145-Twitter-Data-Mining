@@ -88,5 +88,10 @@ class Tweet(object):
 		if "text" in self.tweet:
 			return self.tweet["text"]
 
+	def user(self):
+		if "user" in self.tweet and "id" in self.tweet["user"]:
+			return self.tweet["user"]["id"]
+		return 0
+
 	def __repr__(self):
 		return json.dumps(self.tweet, sort_keys=True, indent=2)

@@ -2,7 +2,7 @@ from TwitterAPI import TwitterAPI
 from twitter_data import TwitterData, Tweet
 import analyze
 from passwords import *
-import argparse, pprint, math, json
+import argparse, pprint, math, json, datetime
 
 def scrape_tweets(file_loc, max_tweets):
 	""" Scrape tweets and store into a file """
@@ -26,11 +26,26 @@ def scrape_tweets(file_loc, max_tweets):
 			print("Scraped {} tweets".format(count))
 			break
 
-
 def dump_data(file_loc):
 	""" Dumps the data stored in the file """
 	td = TwitterData(file_loc)
 	print(json.dumps(td.get_tweets(), sort_keys=True, indent=2))
+
+def calculate_stats(file_loc):
+	td = TwitterData(file_loc)
+	tweets = [Tweet(t) for t in td.get_tweets()]
+
+	d = {}
+	d["num_tweets"]    = len(tweets)
+	d["unique_users"]  = len(set(map(lambda t: t.user(), tweets)))
+	d["min_date"]      = datetime.datetime.fromtimestamp(min(map(lambda t: t.timestamp(), tweets))/1000)
+	d["max_date"]      = datetime.datetime.fromtimestamp(max(map(lambda t: t.timestamp(), tweets))/1000)
+	d["avg_followers"] = sum(map(lambda t: t.tweet["user"]["followers_count"], tweets))/len(tweets)
+	d["avg_friends"]   = sum(map(lambda t: t.tweet["user"]["friends_count"], tweets))/len(tweets)
+	d["avg_statuses"]  = sum(map(lambda t: t.tweet["user"]["statuses_count"], tweets))/len(tweets)
+
+	for k,v in sorted(d.items()):
+		print("{0: <15}: {1}".format(k, v))
 
 if __name__ == '__main__':
 	parser = argparse.ArgumentParser(description='CS 145 Twitter Data Mining Project')
@@ -39,6 +54,7 @@ if __name__ == '__main__':
 	parser.add_argument('--scrape', help='Start scraping tweets from twitter', action='store_true')
 	parser.add_argument('--dump', help='Dump the data from the given file to stdout in JSON format', action='store_true')
 	parser.add_argument('--analyze', help='Analyze the data from the given file', action='store_true')
+	parser.add_argument('--stats', help='Print statistics about the data from the given file', action='store_true')
 
 	args = parser.parse_args()
 	if args.scrape:
@@ -48,3 +64,5 @@ if __name__ == '__main__':
 	if args.analyze:
 		g = geoCluster(args.file)
 		g.createClusters(clusterSize=400, numClusters=2000, neighborDistance=0)
+	if args.stats:
+		calculate_stats(args.file)
