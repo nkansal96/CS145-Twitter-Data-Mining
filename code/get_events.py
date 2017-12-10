@@ -14,7 +14,7 @@ def get_events(file_loc):
   statsByDate = {}
 
   for tweet in tweets:
-  	tweetDate = d.fromtimestamp(int(tweet['timestamp_ms']) / 1000.0)
+  	tweetDate = d.fromtimestamp(int(tweet['timestamp_ms']) / 1000.0).strftime('%Y-%m-%d')
   	if tweetDate in tweetsByDate:
   		tweetsByDate[tweetDate].append(tweet['text'])
   	else:
@@ -25,8 +25,10 @@ def get_events(file_loc):
   for date in tweetsByDate.keys():
     if len(tweetsByDate[date]) < 1000:
       continue
-    totalTweetCount += len(tweetsByDate)
+    totalTweetCount += len(tweetsByDate[date])
     statsByDate[date] = get_stats_for_day(tweetsByDate[date])
+
+  pprint(totalTweetCount)
 
   bigWordDict = {}
   for wordList in statsByDate.values():
@@ -44,16 +46,19 @@ def get_events(file_loc):
   for date in statsByDate.keys():
     eventsByDate[date] = set()
 
-  # individual days
+  # get events for individual days
   for date in statsByDate.keys():
-    print()
     numTweets = len(tweetsByDate[date]) * 1.0
     for word in statsByDate[date].keys():
       statsByDate[date][word] = statsByDate[date][word] / numTweets
-      if statsByDate[date][word] < 0.0007 or bigWordDict[word] > 0.4:
+      if statsByDate[date][word] < 0.0007 or bigWordDict[word] > 0.001:
         continue
-      if statsByDate[date][word] - bigWordDict[word] > -0.5:
+      if statsByDate[date][word] - bigWordDict[word] > 0.001:
         eventsByDate[date].add(word)
+
+  # convert sets to lists so we can serialize
+  for date in eventsByDate:
+    eventsByDate[date] = list(eventsByDate[date])
 
   results = open('events.json', 'w')
   results.write(json.dumps(eventsByDate))
