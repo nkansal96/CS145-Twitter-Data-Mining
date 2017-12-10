@@ -28,8 +28,6 @@ def get_events(file_loc):
     totalTweetCount += len(tweetsByDate[date])
     statsByDate[date] = get_stats_for_day(tweetsByDate[date])
 
-  pprint(totalTweetCount)
-
   bigWordDict = {}
   for wordList in statsByDate.values():
     for word in wordList.keys():
