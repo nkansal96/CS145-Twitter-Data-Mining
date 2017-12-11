@@ -2,7 +2,6 @@ from datetime import date as d
 from pprint import pprint
 from nltk import word_tokenize
 from nltk.corpus import stopwords
-from nltk.stem.porter import *
 from nltk.util import ngrams
 import argparse, json, re, random
 
